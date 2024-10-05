@@ -1,16 +1,17 @@
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-rows: 100px 1fr 100px;
+  min-height: 100vh;
 }
 
 nav {
   display: flex;
-  height: 100px;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   gap:20px;
   background-color: #FFF7ED;
   color: white;
-  padding: 10px;
+  padding: 0 60px;
 }
 
 nav > a {
@@ -25,8 +26,62 @@ nav > a {
   flex-grow: 1;
 }
 
+.hero{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .home{
-  background-image: url('https://s3-alpha-sig.figma.com/img/050a/aa4a/9b62f902c3de6d1b54b3a5d23341752c?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mF5sPzChmozsvDz~OeX7NuzMuVN53NVMcQ8WdRiaO3XpXKMReunzjN4dIZ-8tJzp4kyt2z8rJcmForWBNem5J1-yv9q65pNh8cGlh0K12I-XsoWhONubogyQfv6FCrq9EgTa20lBG~wpoxepSffBicytmSVogvvCqXoTOV62vFqWifwYZbRwfN1IGihq35EUoJR-nUMFK9~11QuIU6rDzOp5KK-3rVLON4~GLcFc07DI0k7lVNNa~i9gNJ4uRwuFui1dBnEyaISn9E44AvHXk-Fx4znbut3fG9F5GAx04r4x8dnWDIURqa7MOPxmuQ6qiDNBz-vrWCbqD1u6aGzrDA__');
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-image: url('../images/9b62f902c3de6d1b54b3a5d23341752c.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2em;
+  width: 50%;
+}
+
+.content > h1{
+  font-weight: 800;
+}
+
+.content > button{
+  background-color: #FFA500;
+  color: white;
+  width: 100%;
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-top: 20px;
+  font-weight: 800;
+}
+
+button{
+  cursor: pointer;
+}
+
+.content > button:hover{
+  background-color: #FF8C00;
 }
 
 footer{
@@ -36,9 +91,6 @@ footer{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
+
   width: 100%;
 }
