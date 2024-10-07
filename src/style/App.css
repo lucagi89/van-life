@@ -1,3 +1,14 @@
+@import url('./home.css');
+@import url('./about.css');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 .App {
   display: grid;
   grid-template-rows: 100px 1fr 100px;
@@ -35,54 +46,20 @@ nav > a {
   width: 100%;
 }
 
-.home{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  background-image: url('../images/9b62f902c3de6d1b54b3a5d23341752c.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-}
-
-.content{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 2em;
-  width: 50%;
-}
-
-.content > h1{
+.content-home > h1{
   font-weight: 800;
 }
 
-.content > button{
-  background-color: #FFA500;
-  color: white;
+.about-img{
   width: 100%;
-  padding: 20px;
-  border: none;
   border-radius: 5px;
-  font-size: 1em;
-  margin-top: 20px;
-  font-weight: 800;
 }
+
 
 button{
   cursor: pointer;
 }
 
-.content > button:hover{
-  background-color: #FF8C00;
-}
 
 footer{
   background-color: #444444;
