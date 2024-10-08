@@ -10,6 +10,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
 }
 
 .content-about{
@@ -19,18 +20,18 @@
   justify-content: space-around;
   width: 50%;
   height: 100%;
-  /* border: solid 1px #FFA500; */
+  /* border: solid 1px #000000; */
+  background-color: rgba(0, 0, 0, 0.1);
   gap:20px;
+  font-size: 1em;
 }
 
-.about-hero,
-.about-bottom{
+.about-hero{
   width:90%;
-  height: 200px;
 }
 
 .about-bottom{
-  padding: 30px 50px;
+  padding: 15px 50px;
   background-color: #e2a04e;
   color: black;
   display: flex;
@@ -39,6 +40,8 @@
   color: white;
   font-weight: 800;
   border-radius: 5px;
+  width: 90%;
+  margin-bottom: 20px;
 }
 .about-bottom > button{
   background-color: #000000;
@@ -50,4 +53,8 @@
   font-size: 1em;
   margin-top: 20px;
   font-weight: 800;
+}
+
+.about-bottom > button:hover{
+  background-color: #565656;
 }
