@@ -9,7 +9,6 @@
   box-sizing: border-box;
 }
 
-
 .App {
   display: grid;
   grid-template-rows: 100px 1fr 100px;
@@ -47,11 +46,9 @@ nav > a {
   width: 100%;
 }
 
-
 button{
   cursor: pointer;
 }
-
 
 footer{
   background-color: #444444;
@@ -60,6 +57,5 @@ footer{
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 100%;
 }

@@ -1,13 +1,19 @@
 .content-vans{
   width: 60%;
 }
+
+.content-vans > h1{
+  font-weight: 900;
+  padding: 30px;
+  font-size: 3em;
+}
 .vans-list{
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
   gap: 30px;
   padding: 30px;
-  border: solid 1px #FFA500;
+  /* border: solid 1px #FFA500; */
 }
 
 .van-card{
@@ -15,33 +21,63 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80%;
-  height: 400px;
+  /* width: 80%; */
+  height: 500px;
   border-radius: 5px;
   gap:20px;
-  overflow: hidden; /* Optional: to hide overflow */
+  overflow: hidden;
   margin: 0 auto;
 }
 
 .van-card-image{
   width: 100%;
+  border-radius: 5px;
 }
 
 .van-card-info{
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: 100px;
   gap: 20px;
+  font-weight: 800;
+   /* border: solid 1px #FFA500; */
 }
 
-/* .container {
-  width: 300px;
-  height: 200px;
-  overflow: hidden;
-} */
+.van-card-info > div{
+  /* border: solid 1px #FFA500; */
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
-/* .image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} */
+.badge{
+  padding: 20px 5px;
+  border-radius: 5px;
+  height: 30px;
+  line-height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFEAD0;
+}
+
+
+.background-orange{
+  background-color: #E17654;
+}
+
+.background-green{
+  background-color: #115E59;
+}
+
+.background-black{
+  background-color: #161616;
+}
+
+
+.van-card-link {
+  text-decoration: none;
+  color: inherit;
+}
