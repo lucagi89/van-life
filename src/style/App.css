@@ -9,18 +9,25 @@
   box-sizing: border-box;
 }
 
-.App {
+.app {
   display: grid;
   grid-template-rows: 100px 1fr 100px;
   min-height: 100vh;
 }
 
-nav {
+header{
+  background-color: #FFF7ED;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   gap:20px;
-  background-color: #FFF7ED;
   color: white;
   padding: 0 60px;
 }

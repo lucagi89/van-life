@@ -10,8 +10,12 @@ export default function VanCard(props) {
   )
   return (
     <div className='van-card'>
-      <Link to={`/vans/${id}`} className='van-card-link'>
-        <img src={imageUrl} alt={name} className="van-card-image"/>
+      <Link to={`/vans/${id}`} className='van-card-link'
+      aria-label={`View details for ${name},
+      priced at $${price} per day`}
+      >
+
+        <img src={imageUrl} alt={`image of ${name}`} className="van-card-image"/>
 
       <div className='van-card-info'>
         <div>
