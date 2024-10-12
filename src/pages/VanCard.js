@@ -15,11 +15,11 @@ export default function VanCard(props) {
       priced at $${price} per day`}
       >
 
-        <img src={imageUrl} alt={`image of ${name}`} className="van-card-image"/>
+        <img src={imageUrl} alt={name} className="van-card-image"/>
 
       <div className='van-card-info'>
         <div>
-          <h2>{name}</h2>
+          <h3>{name}</h3>
           <p className={`badge background-${typeColor}`}>{type}</p>
         </div>
         <p>£{price}<br></br>/day</p>
