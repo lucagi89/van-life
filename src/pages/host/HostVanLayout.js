@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, NavLink, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function HostVanDetail() {
@@ -12,6 +12,12 @@ export default function HostVanDetail() {
     type === 'luxury' ? 'black' :
     type === 'rugged' ? 'green' : ""
   )
+
+  const activeStyle = {
+    fontWeight: "bold",
+    textDecoration: "underline",
+    color: "#161616"
+  }
 
 
   useEffect(function() {
@@ -27,7 +33,7 @@ export default function HostVanDetail() {
 
   return (
     <div className='van-page'>
-      <Link to="/host/vans" className='back-link'> {"<-"} Back to My Vans</Link>
+      <Link to=".." relative = 'path' className='back-link'> {"<-"} Back to My Vans</Link>
 
       <div className="host-van-details">
         <img src={imageUrl} alt={`${name}`} className="host-van-image"/>
@@ -39,10 +45,25 @@ export default function HostVanDetail() {
 
         <p><strong>£{price}</strong>/day</p>
       </div>
+      <nav>
+      <NavLink to="."
+          end
+          style={({isActive}) => isActive ? activeStyle: null }>
+          Details
+        </NavLink>
+
+        <NavLink to="pricing"
+          style={({isActive}) => isActive ? activeStyle: null }>
+          Pricing
+        </NavLink>
+
+        <NavLink to="photos"
+          style={({isActive}) => isActive ? activeStyle: null }>
+          Photos
+        </NavLink>
+      </nav>
       </div>
-      <div className="van-specifics">
-        <p>{description}</p>
-      </div>
+      <Outlet context={{ van }}/>
     </div>
   )
 }

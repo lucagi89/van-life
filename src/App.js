@@ -8,7 +8,10 @@ import HostLayout from "./pages/host/HostLayout.js"
 import Reviews from "./pages/host/Reviews.js"
 import Income from "./pages/host/Income.js"
 import HostVans from "./pages/host/HostVans.js"
-import HostVanDetail from "./pages/host/HostVanDetail.js"
+import HostVanLayout from "./pages/host/HostVanLayout.js"
+import HostVanDetails from "./pages/host/HostVanDetails.js"
+import HostVanPricing from "./pages/host/HostVanPricing.js"
+import HostVanPhotos from "./pages/host/HostVanPhotos.js"
 // import './style/App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import "./server";
@@ -30,7 +33,11 @@ function App() {
               <Route index element={<Dashboard />} />
               <Route path="reviews" element={<Reviews />} />
               <Route path="vans" element={<HostVans />} />
-              <Route path='vans/:id' element={<HostVanDetail />} />
+              <Route path='vans/:id' element={<HostVanLayout />} >
+                <Route index element={<HostVanDetails />} />
+                <Route path="pricing" element={<HostVanPricing />} />
+                <Route path="photos" element={<HostVanPhotos />} />
+              </Route>
               <Route path="income" element={<Income />} />
             </Route>
           </Route>
