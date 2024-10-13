@@ -1,8 +1,17 @@
 import VanCard from './VanCard'
-import { useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 export default function Vans() {
   const [vans, setVans] = useState([])
+
+  const [searchParams, setSearchParams]  = useSearchParams()
+  const typeFilter = searchParams.get('type')
+  console.log(typeFilter)
+
+  const filteredVans = vans && typeFilter ?
+    vans.filter(van => van.type === typeFilter) : vans
+
 
   useEffect(function() {
     fetch("/api/vans")
@@ -14,7 +23,7 @@ export default function Vans() {
     <div className='content-vans'>
       <h1>Explore our van options</h1>
       <div className='vans-list'>
-        {vans.map(van => <VanCard key={van.id} {...van} />)}
+        {filteredVans.map(van => <VanCard key={van.id} {...van} />)}
       </div>
     </div>
   )
