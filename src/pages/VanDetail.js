@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function VanDetail() {
@@ -13,6 +13,8 @@ export default function VanDetail() {
     type === 'rugged' ? 'green' : ""
   )
 
+  const location = useLocation().state.search
+  console.log(location)
 
   useEffect(function() {
     fetch(`/api/vans`)
@@ -27,7 +29,7 @@ export default function VanDetail() {
 
   return (
     <div className='van-page'>
-      <Link to="/vans" className='back-link'> {"<-"} Back to All Vans</Link>
+      <Link to={`/vans${location}`} className='back-link' > {"<-"} Back to All Vans</Link>
 
       <div className="van-details">
         <img src={imageUrl} alt={`${name}`} className="van-image"/>

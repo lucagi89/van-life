@@ -10,8 +10,11 @@ export default function VanCard(props) {
   )
   return (
     <div className='van-card'>
-      <Link to={`/vans/${id}`} className='van-card-link'
-      aria-label={`View details for ${name},
+      <Link
+        to={id}
+        state={props.state}
+        className='van-card-link'
+        aria-label={`View details for ${name},
       priced at $${price} per day`}
       >
 

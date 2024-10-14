@@ -6,7 +6,7 @@ export default function HostVanCard(props) {
 
   return (
     <div className='host-van-card'>
-      <Link to={`/host/vans/${id}`} className='host-van-card-link'
+      <Link to={id} className='host-van-card-link'
       aria-label={`View details for ${name},
       priced at $${price} per day`}
       >
