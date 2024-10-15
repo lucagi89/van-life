@@ -1,11 +1,14 @@
 import VanCard from './VanCard'
 import { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
+import { getVans } from '../api.js'
 
 export default function Vans() {
   const [vans, setVans] = useState([])
 
   const [searchParams, setSearchParams]  = useSearchParams()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
   const typeFilter = searchParams.get('type')
 
   const filteredVans = vans && typeFilter ?
@@ -13,10 +16,38 @@ export default function Vans() {
   const searchQuery = searchParams ? searchParams.toString() : ''
 
   useEffect(function() {
-    fetch("/api/vans")
-        .then(res => res.json())
-        .then(data => setVans(data.vans))
+    async function fetchVans() {
+      setLoading(true)
+      try {
+        const vans = await getVans()
+        setVans(vans)
+      } catch (error) {
+        setError(error)
+      }finally {
+        setLoading(false)
+      }
+    }
+    fetchVans()
+
   }, [])
+
+  if (loading) {
+    return (
+      <div className='content-vans'>
+        <h1 className='message' aria-live="polite">Loading...⏳</h1>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className='content-vans'>
+        <h1 className='message' aria-live="assertive">Sorry...Something went wrong</h1>
+        <p>{error.message}</p>
+        <Link to='/' className='button-home'> 👈🏼 Go back to the Home Page</Link>
+      </div>
+    )
+  }
 
 
 

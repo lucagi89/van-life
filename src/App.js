@@ -13,6 +13,8 @@ import HostVanDetails from "./pages/host/HostVanDetails.js"
 import HostVanPricing from "./pages/host/HostVanPricing.js"
 import HostVanPhotos from "./pages/host/HostVanPhotos.js"
 import PageNotFound from "./pages/PageNotFound.js"
+import Authenticator from "./components/Authenticator.js"
+import Login from "./pages/Login.js"
 // import './style/App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import "./server";
@@ -29,17 +31,20 @@ function App() {
             <Route path="about" element={<About />} />
               <Route path="vans" element={<Vans />} />
               <Route path="vans/:id" element={<VanDetail />} />
+              <Route path="login" element={<Login />} />
 
-            <Route path="host" element={<HostLayout />} >
-              <Route index element={<Dashboard />} />
-              <Route path="reviews" element={<Reviews />} />
-              <Route path="vans" element={<HostVans />} />
-              <Route path='vans/:id' element={<HostVanLayout />} >
-                <Route index element={<HostVanDetails />} />
-                <Route path="pricing" element={<HostVanPricing />} />
-                <Route path="photos" element={<HostVanPhotos />} />
+            <Route element={<Authenticator />} >
+              <Route path="host" element={<HostLayout />} >
+                <Route index element={<Dashboard />} />
+                <Route path="reviews" element={<Reviews />} />
+                <Route path="vans" element={<HostVans />} />
+                <Route path='vans/:id' element={<HostVanLayout />} >
+                  <Route index element={<HostVanDetails />} />
+                  <Route path="pricing" element={<HostVanPricing />} />
+                  <Route path="photos" element={<HostVanPhotos />} />
+                </Route>
+                <Route path="income" element={<Income />} />
               </Route>
-              <Route path="income" element={<Income />} />
             </Route>
             <Route path="*" element={<PageNotFound />} />
           </Route>
