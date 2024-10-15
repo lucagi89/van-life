@@ -13,8 +13,9 @@ export default function VanDetail() {
     type === 'rugged' ? 'green' : ""
   )
 
-  const location = useLocation().state.search
-  console.log(location)
+  const search = useLocation().state?.search || ''
+  const queryType = useLocation().state?.type || 'All'
+  const queryTypeCapitalized = queryType.charAt(0).toUpperCase() + queryType.slice(1)
 
   useEffect(function() {
     fetch(`/api/vans`)
@@ -29,7 +30,12 @@ export default function VanDetail() {
 
   return (
     <div className='van-page'>
-      <Link to={`/vans${location}`} className='back-link' > {"<-"} Back to All Vans</Link>
+      <Link
+        to={`..?${search}`}
+        relative="path"
+        className='back-link' >
+        {"<-"} Back to {queryTypeCapitalized} Vans
+      </Link>
 
       <div className="van-details">
         <img src={imageUrl} alt={`${name}`} className="van-image"/>

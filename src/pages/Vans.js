@@ -10,12 +10,15 @@ export default function Vans() {
 
   const filteredVans = vans && typeFilter ?
     vans.filter(van => van.type === typeFilter) : vans
+  const searchQuery = searchParams ? searchParams.toString() : ''
 
   useEffect(function() {
     fetch("/api/vans")
         .then(res => res.json())
         .then(data => setVans(data.vans))
   }, [])
+
+
 
   return (
     <div className='content-vans'>
@@ -46,7 +49,11 @@ export default function Vans() {
 
       </div>
       <div className='vans-list'>
-  {filteredVans.map(van => <VanCard key={van.id} state={{search: `?type=${typeFilter}`}} {...van} />)}
+        {filteredVans.map(van =>
+          <VanCard
+            key={van.id}
+            state={{search: searchQuery, type: typeFilter}} {...van} />
+          )}
       </div>
     </div>
   )

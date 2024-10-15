@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom"
 
 export default function VanCard(props) {
-  const {id, name, price, imageUrl, type } = props
+  const {id, name, price, imageUrl, type, state } = props
   let typeColor = (
     type === 'simple' ? 'orange' :
     type === 'luxury' ? 'black' :
@@ -12,7 +12,7 @@ export default function VanCard(props) {
     <div className='van-card'>
       <Link
         to={id}
-        state={props.state}
+        state={state}
         className='van-card-link'
         aria-label={`View details for ${name},
       priced at $${price} per day`}
