@@ -75,3 +75,35 @@ footer{
   align-items: center;
   width: 100%;
 }
+
+.page-not-found{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 20px;
+}
+
+.page-not-found > h1{
+  font-size: 3em;
+  font-weight: 800;
+}
+
+.page-not-found > a{
+  background-color: #FFA500;
+  width: 300px;
+  color: white;
+  text-align: center;
+  /* width: 50%; */
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.page-not-found > a:hover{
+  background-color: #b66400;
+}

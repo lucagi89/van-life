@@ -12,6 +12,7 @@ import HostVanLayout from "./pages/host/HostVanLayout.js"
 import HostVanDetails from "./pages/host/HostVanDetails.js"
 import HostVanPricing from "./pages/host/HostVanPricing.js"
 import HostVanPhotos from "./pages/host/HostVanPhotos.js"
+import PageNotFound from "./pages/PageNotFound.js"
 // import './style/App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import "./server";
@@ -40,6 +41,7 @@ function App() {
               </Route>
               <Route path="income" element={<Income />} />
             </Route>
+            <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>
   </BrowserRouter>
