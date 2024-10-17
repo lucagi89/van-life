@@ -1,10 +1,13 @@
 import { useParams, Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getVans } from "../api";
 
 export default function VanDetail() {
   const idParams = useParams()
   const id = idParams.id
   const [van, setVan] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
   const {name, price, imageUrl, type, description} = van
 
   let typeColor = (
@@ -17,16 +20,29 @@ export default function VanDetail() {
   const queryType = useLocation().state?.type || 'All'
   const queryTypeCapitalized = queryType.charAt(0).toUpperCase() + queryType.slice(1)
 
-  useEffect(function() {
-    fetch(`/api/vans`)
-        .then(res => res.json())
-        .then(data => {
-          const van = data.vans.find(van => van.id === id)
-          setVan(van)
-        })
-  }
-  , [])
 
+  useEffect(() => {
+    async function loadVans() {
+        setLoading(true)
+        try {
+            const data = await getVans(id)
+            setVan(data)
+        } catch (err) {
+            setError(err)
+        } finally {
+            setLoading(false)
+        }
+    }
+    loadVans()
+}, [id])
+
+  if (loading) {
+    return <h1>Loading...</h1>
+  }
+
+  if (error) {
+    return <h1>There was an error: {error.message}</h1>
+  }
 
   return (
     <div className='van-page'>

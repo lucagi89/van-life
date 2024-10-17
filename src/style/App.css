@@ -121,7 +121,10 @@ footer{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-inline: 27px;
+  padding-top: 10%;
+  height: 100%;
+  gap: 30px;
+  /* padding-inline: 27px; */
 }
 
 .login-form {
@@ -161,4 +164,11 @@ footer{
   margin-top: 22px;
   color: white;
   font-family: "Inter", sans-serif;
+}
+
+.warning{
+  color: red;
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: 500;
 }
