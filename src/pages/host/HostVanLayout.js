@@ -1,17 +1,16 @@
 import { useParams, Link, NavLink, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getHostVans } from "../../api";
+import { Loading } from "../../components/Loading";
+import { Error } from "../../components/Error";
 
 export default function HostVanDetail() {
-  const idParams = useParams()
-  const id = idParams.id
-  const [van, setVan] = useState({})
-  const {name, price, imageUrl, type, description} = van
+  const [currentVan, setCurrentVan] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const { id } = useParams()
+  // const {name, price, imageUrl, type} = currentVan ? currentVan : {}
 
-  let typeColor = (
-    type === 'simple' ? 'orange' :
-    type === 'luxury' ? 'black' :
-    type === 'rugged' ? 'green' : ""
-  )
 
   const activeStyle = {
     fontWeight: "bold",
@@ -19,17 +18,39 @@ export default function HostVanDetail() {
     color: "#161616"
   }
 
+  useEffect(() => {
+    async function loadVans() {
+        setLoading(true)
+        try {
+            const data = await getHostVans(id)
+            setCurrentVan(data[0])
+        } catch (err) {
+            setError(err)
+        } finally {
+            setLoading(false)
+        }
+    }
 
-  useEffect(function() {
-    fetch(`/api/vans`)
-        .then(res => res.json())
-        .then(data => {
-          const van = data.vans.find(van => van.id === id)
-          setVan(van)
-        })
+    loadVans()
+}, [id])
+
+  if (loading) {
+    return <Loading />
   }
-  , [])
 
+  if (error) {
+    return <Error error={{message: error}} />
+  }
+
+  // console.log(currentVan)
+  // console.log(id)
+  const { name, price, imageUrl, type } = currentVan ? currentVan : {}
+
+  let typeColor = (
+    type === 'simple' ? 'orange' :
+    type === 'luxury' ? 'black' :
+    type === 'rugged' ? 'green' : ""
+  )
 
   return (
     <div className='van-page'>
@@ -63,7 +84,7 @@ export default function HostVanDetail() {
         </NavLink>
       </nav>
       </div>
-      <Outlet context={{ van }}/>
+      <Outlet context={{ currentVan }}/>
     </div>
   )
 }

@@ -2,6 +2,8 @@ import VanCard from './VanCard'
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { getVans } from '../api.js'
+import { Loading } from '../components/Loading'
+import { Error } from '../components/Error'
 
 export default function Vans() {
   const [vans, setVans] = useState([])
@@ -32,21 +34,11 @@ export default function Vans() {
   }, [])
 
   if (loading) {
-    return (
-      <div className='content-vans'>
-        <h1 className='message' aria-live="polite">Loading...⏳</h1>
-      </div>
-    )
+    return <Loading />
   }
 
   if (error) {
-    return (
-      <div className='content-vans'>
-        <h1 className='message' aria-live="assertive">Sorry...Something went wrong</h1>
-        <p>{error.message}</p>
-        <Link to='/' className='button-home'> 👈🏼 Go back to the Home Page</Link>
-      </div>
-    )
+    return <Error error={{message: error}} />
   }
 
 
