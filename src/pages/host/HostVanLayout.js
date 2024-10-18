@@ -23,7 +23,7 @@ export default function HostVanDetail() {
         setLoading(true)
         try {
             const data = await getHostVans(id)
-            setCurrentVan(data[0])
+            setCurrentVan(data)
         } catch (err) {
             setError(err)
         } finally {
@@ -42,8 +42,6 @@ export default function HostVanDetail() {
     return <Error error={{message: error}} />
   }
 
-  // console.log(currentVan)
-  // console.log(id)
   const { name, price, imageUrl, type } = currentVan ? currentVan : {}
 
   let typeColor = (

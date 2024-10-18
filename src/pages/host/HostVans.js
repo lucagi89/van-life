@@ -1,6 +1,6 @@
 import HostVanCard from "./HostVanCard";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import '../../style/App.css';
 import { getHostVans } from "../../api";
 import { Loading } from "../../components/Loading";
@@ -13,7 +13,7 @@ export default function HostVans() {
   const [error, setError] = useState(null)
 
 
- useEffect(() => {
+useEffect(() => {
     async function loadVans() {
         setLoading(true)
         try {
@@ -38,23 +38,9 @@ export default function HostVans() {
 
 
 
-  const hostVansLoop = vans && vans.map((van) => (
-    <div className='host-van-card'>
-      <Link to={van.id} className='host-van-card-link'
-      aria-label={`View details for ${van.name},
-      priced at $${van.price} per day`}
-      >
-
-        <img src={van.imageUrl} alt={van.name} className="host-van-card-image"/>
-
-      <div className='host-van-card-info'>
-          <h3>{van.name}</h3>
-
-        <p>£{van.price}<br></br>/day</p>
-      </div>
-      </Link>
-    </div>)
-  )
+  const hostVansLoop = vans && vans.map((van) => {
+    return (<HostVanCard key={van.id} van={van} />)
+  })
 
   return (
     <div className="host-vans-container">
